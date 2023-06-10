@@ -1,0 +1,15 @@
+cd ~
+git clone https://github.com/nicman23/dkms-hid-nintendo
+cd dkms-hid-nintendo
+sudo dkms add .
+sudo dkms build nintendo -v 3.2
+sudo dkms install nintendo -v 3.2
+cd ~
+sudo dnf install libevdev-devel libudev-devel
+cmake .
+sudo make install
+sudo systemctl enable --now joycond
+pip3 install git+https://github.com/joaorb64/joycond-cemuhook
+echo "⚠️ Reboot your PC"
+echo "✅ run /home/tom/.local/bin/joycond-cemuhook to start the motion server"
+echo "To create a joycon pair press the L+R buttons on the joycons at the same time"
